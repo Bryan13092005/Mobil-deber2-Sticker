@@ -1,4 +1,4 @@
-//componente que permite picar un emoji de la lista anterior
+// Modal con información institucional de la Escuela Politécnica Nacional.
 import { Modal, View, Text, Pressable, StyleSheet } from 'react-native';
 import { PropsWithChildren } from 'react';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
@@ -11,6 +11,7 @@ type Props = PropsWithChildren<{
 export default function AcercaDeEPN({ isVisible, onClose }: Props) {
   return (
     <View>
+      {/* Presenta los datos institucionales y la acción para cerrar. */}
       <Modal animationType="slide" transparent={true} visible={isVisible}>
         <View style={styles.modalContent}>
           <View style={styles.titleContainer}>
@@ -30,6 +31,7 @@ export default function AcercaDeEPN({ isVisible, onClose }: Props) {
   );
 }
 
+// Organiza el panel informativo y sus elementos de encabezado.
 const styles = StyleSheet.create({
   modalContent: {
     height: '36%',

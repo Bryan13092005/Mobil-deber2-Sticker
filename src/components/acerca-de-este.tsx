@@ -1,4 +1,4 @@
-//componente que permite picar un emoji de la lista anterior
+// Modal con una descripción del propósito y las funciones del proyecto.
 import { Modal, View, Text, Pressable, StyleSheet } from 'react-native';
 import { PropsWithChildren } from 'react';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
@@ -11,6 +11,7 @@ type Props = PropsWithChildren<{
 export default function AcercaDelProyecto({ isVisible, onClose }: Props) {
   return (
     <View>
+      {/* El contenido y el botón de cierre se muestran cuando está visible. */}
       <Modal animationType="slide" transparent={true} visible={isVisible}>
         <View style={styles.modalContent}>
           <View style={styles.titleContainer}>
@@ -33,6 +34,7 @@ export default function AcercaDelProyecto({ isVisible, onClose }: Props) {
   );
 }
 
+// Organiza el panel, el encabezado y el texto descriptivo.
 const styles = StyleSheet.create({
   modalContent: {
     height: '60%',

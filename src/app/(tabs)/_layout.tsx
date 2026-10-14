@@ -3,6 +3,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function TabLayout() {
   return (
+    // Configura las pestañas y sus iconos según el estado seleccionado.
     <Tabs screenOptions={{
         tabBarActiveTintColor: '#D33724',
     headerStyle: {

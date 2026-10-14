@@ -18,16 +18,19 @@ import EmojiSticker from '@/components/emoji-sticker';
 
 const PlaceholderImage = require('@/assets/images/background-image.png');
 
-
+// Pantalla para elegir una imagen, añadir un emoji y guardarla.
 export default function Index() {
+  // Referencia usada para capturar el resultado final.
   const imageRef = useRef<View>(null);
-  //permisos para acceder a la galería de imágenes del usuario
+  // Solicita acceso a la biblioteca de imágenes cuando hace falta.
   const [permissionResponse, requestPermission] = ImagePicker.useMediaLibraryPermissions();
+  // Estado de la imagen y de los controles de edición.
   const [selectedImage, setSelectedImage] = useState<string | undefined>(undefined);
   const [showAppOptions, setShowAppOptions] = useState<boolean>(false);
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   const [pickedEmoji, setPickedEmoji] = useState<ImageSourcePropType | undefined>(undefined);
 
+  // Solicita permiso de galería al abrir la pantalla si aún no se concedió.
   useEffect(() => {
     if (!permissionResponse?.granted) {
       requestPermission();
@@ -35,6 +38,7 @@ export default function Index() {
   }, []);
 
   const pickImageAsync = async () => {
+    // Abre la galería y guarda la imagen seleccionada para editarla.
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ['images'],
       allowsEditing: true,
@@ -55,7 +59,8 @@ export default function Index() {
       setPickedEmoji(undefined);
     };
 
-  const onAddSticker = () => {
+    // Abre el selector para añadir una calcomanía.
+    const onAddSticker = () => {
     setIsModalVisible(true);
   };
 
@@ -63,6 +68,7 @@ export default function Index() {
     setIsModalVisible(false);
   };
 
+  // Guarda la composición con el método disponible en cada plataforma.
   const onSaveImageAsync = async () => {
     if (Platform.OS !== 'web') {
     try {
@@ -97,6 +103,7 @@ export default function Index() {
   };
 
   return (
+    // Captura la imagen junto con la calcomanía para generar el resultado.
     <GestureHandlerRootView style={styles.container}>
       <View style={styles.container}>
         <View style={styles.imageContainer}>
@@ -105,6 +112,7 @@ export default function Index() {
             {pickedEmoji && <EmojiSticker imageSize={40} stickerSource={pickedEmoji} />}
           </View>
         </View>
+        {/* Muestra controles de edición o acciones para iniciar. */}
         {showAppOptions ? (
           <View style={styles.optionsContainer}>
             <View style={styles.optionsRow}>
@@ -119,6 +127,7 @@ export default function Index() {
             <Button label="Usar esta imagen" onPress={()=>{setShowAppOptions(true)}}/>
           </View>
         )}
+        {/* Selector modal que actualiza la calcomanía elegida. */}
         <EmojiPicker isVisible={isModalVisible} onClose={onModalClose}>
           <EmojiList onSelect={setPickedEmoji} onCloseModal={onModalClose} />
         </EmojiPicker>
@@ -128,6 +137,7 @@ export default function Index() {
   );
 }
 
+// Distribuye el área de imagen y los controles en la pantalla.
 const styles = StyleSheet.create({
   container: {
     flex: 1,

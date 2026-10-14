@@ -4,6 +4,7 @@ import { Link, Stack } from 'expo-router';
 export default function NotFoundScreen() {
   return (
     <>
+      {/* Personaliza el título y ofrece volver a la pantalla principal. */}
       <Stack.Screen options={{ title: 'Ruta no encontrada' }} />
       <View style={styles.container}>
         <Link href="/" style={styles.button}>
@@ -14,6 +15,7 @@ export default function NotFoundScreen() {
   );
 }
 
+// Centra el enlace de retorno en la pantalla.
 const styles = StyleSheet.create({
   container: {
     flex: 1,

@@ -11,6 +11,7 @@ type Props = PropsWithChildren<{
 export default function EmojiPicker({ isVisible, children, onClose }: Props) {
   return (
     <View>
+      {/* Panel modal para elegir un emoji y cerrar el selector. */}
       <Modal animationType="slide" transparent={true} visible={isVisible}>
         <View style={styles.modalContent}>
           <View style={styles.titleContainer}>
@@ -26,6 +27,7 @@ export default function EmojiPicker({ isVisible, children, onClose }: Props) {
   );
 }
 
+// Presenta el selector como una hoja en la parte inferior.
 const styles = StyleSheet.create({
   modalContent: {
     height: '25%',

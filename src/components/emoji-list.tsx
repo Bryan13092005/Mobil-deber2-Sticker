@@ -9,6 +9,7 @@ type Props = {
 };
 
 export default function EmojiList({ onSelect, onCloseModal }: Props) {
+  // Recursos locales que aparecen en la lista horizontal.
   const [emoji] = useState<ImageSourcePropType[]>([
     require("@/assets/images/emoji1.png"),
     require("@/assets/images/emoji2.png"),
@@ -19,6 +20,7 @@ export default function EmojiList({ onSelect, onCloseModal }: Props) {
   ]);
 
   return (
+    // Seleccionar un elemento lo aplica y cierra el modal.
     <FlatList
       horizontal
       showsHorizontalScrollIndicator={Platform.OS === 'web'}
@@ -37,6 +39,7 @@ export default function EmojiList({ onSelect, onCloseModal }: Props) {
   );
 }
 
+// Alinea los emojis dentro de la lista desplazable.
 const styles = StyleSheet.create({
   listContainer: {
     borderTopRightRadius: 10,

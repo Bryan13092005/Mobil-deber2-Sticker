@@ -4,6 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 export default function RootLayout() {
   return (
     <>
+    {/* Define las rutas principales y la pantalla de ruta desconocida. */}
     <Stack>
       <Stack.Screen
         name="(tabs)"
@@ -20,6 +21,7 @@ export default function RootLayout() {
         }}
       />
     </Stack>
+    {/* Mantiene la barra de estado en modo oscuro. */}
     <StatusBar style="dark" />
 
     </>

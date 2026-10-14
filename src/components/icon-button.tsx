@@ -10,6 +10,7 @@ type Props = {
 
 export default function IconButton({ icon, label, onPress }: Props) {
   return (
+    // Combina un icono y una etiqueta en un control táctil.
     <Pressable style={styles.iconButton} onPress={onPress}>
       <MaterialIcons name={icon} size={24} color="#357ca5" />
       <Text style={styles.iconButtonLabel}>{label}</Text>
@@ -17,6 +18,7 @@ export default function IconButton({ icon, label, onPress }: Props) {
   );
 }
 
+// Mantiene el contenido del botón centrado y accesible.
 const styles = StyleSheet.create({
   iconButton: {
     justifyContent: 'center',

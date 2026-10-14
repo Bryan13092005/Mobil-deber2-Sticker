@@ -10,6 +10,7 @@ type Props = {
 
 export default function Button({ label, theme, onPress }: Props) {
     if (theme === 'primary') {
+  // Variante principal con icono para elegir una imagen.
   return (
       <View
         style={[
@@ -31,6 +32,7 @@ export default function Button({ label, theme, onPress }: Props) {
   }
 
   if (theme === 'secondary') {
+  // Variante secundaria con el mismo tratamiento visual principal.
   return (
       <View
         style={[
@@ -46,6 +48,7 @@ export default function Button({ label, theme, onPress }: Props) {
     );
   }
 
+  // Botón estándar sin icono ni tema especial.
   return (
     <View style={styles.buttonContainer}>
       <Pressable style={styles.button} onPress={onPress}>
@@ -55,6 +58,7 @@ export default function Button({ label, theme, onPress }: Props) {
   );
 }
 
+// Estilos compartidos y variantes visuales del botón.
 const styles = StyleSheet.create({
   buttonContainer: {
     width: 320,

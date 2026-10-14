@@ -8,11 +8,12 @@ type Props = {
 };
 
 export default function EmojiSticker({ imageSize, stickerSource }: Props) {
-    //ayuda a mutar datos de manera eficiente y rápida, para que la animación sea más fluida
+    // Valores compartidos animan el tamaño y la posición de la calcomanía.
     const scaleImage = useSharedValue(imageSize);
     const translateX = useSharedValue(0);
     const translateY = useSharedValue(0);
 
+    // Alterna el tamaño de la calcomanía al tocarla dos veces.
     const doubleTap = Gesture.Tap()
     .numberOfTaps(2)
     .onStart(() => {
@@ -23,6 +24,7 @@ export default function EmojiSticker({ imageSize, stickerSource }: Props) {
         }
     });
 
+  // Aplica una transición suave al cambio de tamaño.
   const imageStyle = useAnimatedStyle(() => {
     return {
         width: withSpring(scaleImage.value),
@@ -30,11 +32,13 @@ export default function EmojiSticker({ imageSize, stickerSource }: Props) {
     };
     });
 
+    // Actualiza la posición mientras se arrastra la calcomanía.
     const drag = Gesture.Pan().onChange(event => {
         translateX.value += event.changeX;
         translateY.value += event.changeY;
     });
 
+    // Traslada el contenedor usando los valores del gesto.
     const containerStyle = useAnimatedStyle(() => {
         return {
             transform: [
@@ -48,6 +52,7 @@ export default function EmojiSticker({ imageSize, stickerSource }: Props) {
         };
     });
 
+  // Combina los gestos de arrastre y doble toque sobre la imagen.
   return (
     <GestureDetector gesture={drag}>
       <Animated.View style={[containerStyle, { top: -350 }]}>

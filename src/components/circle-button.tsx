@@ -8,6 +8,7 @@ type Props = {
 
 export default function CircleButton({ onPress }: Props) {
   return (
+    // Botón circular que abre el selector de emojis.
     <View style={styles.circleButtonContainer}>
       <Pressable style={styles.circleButton} onPress={onPress}>
         <MaterialIcons name="add" size={38} style={styles.icon} />
@@ -16,6 +17,7 @@ export default function CircleButton({ onPress }: Props) {
   );
 }
 
+// Da forma circular al botón y centra su icono.
 const styles = StyleSheet.create({
   circleButtonContainer: {
     width: 84,

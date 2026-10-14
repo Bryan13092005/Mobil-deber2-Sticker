@@ -7,11 +7,13 @@ type Props = {
 };
 
 export default function ImageViewer({ imgSource, selectedImage }: Props) {
+  // Muestra la imagen elegida o la imagen predeterminada.
   const imageSource = selectedImage ? { uri: selectedImage } : imgSource;
 
   return <Image source={imageSource} style={styles.image} />;
 }
 
+// Define el tamaño y los bordes de la imagen principal.
 const styles = StyleSheet.create({
   image: {
     width: 320,
