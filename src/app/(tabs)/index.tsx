@@ -35,7 +35,7 @@ export default function Index() {
     if (!permissionResponse?.granted) {
       requestPermission();
     }
-  }, []);
+  });
 
   const pickImageAsync = async () => {
     // Abre la galería y guarda la imagen seleccionada para editarla.
